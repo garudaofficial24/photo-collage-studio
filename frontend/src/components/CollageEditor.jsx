@@ -740,9 +740,9 @@ const CollageEditor = () => {
                         data-photo-id={photo.id}
                         data-testid={`collage-photo-${index}`}
                         className={`relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group ${
-                          (layout === '1-large-landscape' && index === 0) ? 'col-span-2 row-span-2' : ''
+                          (layout === '1-large-landscape' && index === 0) ? 'row-span-2' : ''
                         } ${
-                          (layout === '1-large-portrait' && index === 0) ? 'col-span-2 row-span-2' : ''
+                          (layout === '1-large-portrait' && index === 0) ? 'col-span-2' : ''
                         }`}
                         onClick={() => setSelectedPhoto(photo)}
                       >
@@ -761,7 +761,9 @@ const CollageEditor = () => {
                         <div
                           key={`empty-${i}`}
                           className={`bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300 ${
-                            ((layout === '1-large-landscape' || layout === '1-large-portrait') && photos.length === 0 && i === 0) ? 'col-span-2 row-span-2' : ''
+                            (layout === '1-large-landscape' && photos.length === 0 && i === 0) ? 'row-span-2' : ''
+                          } ${
+                            (layout === '1-large-portrait' && photos.length === 0 && i === 0) ? 'col-span-2' : ''
                           }`}
                         >
                           <ImageIcon className="w-8 h-8 text-gray-400" />
