@@ -765,16 +765,27 @@ const CollageEditor = () => {
           <div className="lg:col-span-2">
             <Card className="border-0 shadow-2xl bg-white/90 backdrop-blur-sm overflow-hidden">
               <CardContent className="p-8">
-                <h2 className="text-xl font-semibold mb-6 flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                  <ImageIcon className="w-6 h-6 text-blue-600" />
-                  Preview Kolase
-                </h2>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-xl font-semibold flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                    <ImageIcon className="w-6 h-6 text-blue-600" />
+                    Preview Kolase
+                  </h2>
+                  <div className="text-sm text-gray-500 flex items-center gap-2">
+                    <FileText className="w-4 h-4" />
+                    {paperOrientation === 'portrait' ? 'A4 Portrait' : 'A4 Landscape'}
+                  </div>
+                </div>
 
                 <div
                   ref={collageRef}
                   data-testid="collage-preview"
-                  className="bg-white rounded-xl shadow-inner border-2 border-gray-100 overflow-hidden"
-                  style={{ minHeight: '600px' }}
+                  className={`bg-white rounded-xl shadow-inner border-2 border-gray-100 overflow-hidden transition-all ${
+                    paperOrientation === 'landscape' ? 'max-w-4xl' : 'max-w-2xl'
+                  }`}
+                  style={{ 
+                    minHeight: '600px',
+                    aspectRatio: paperOrientation === 'portrait' ? '210/297' : '297/210'
+                  }}
                 >
                   {/* Company Header */}
                   {(logoPreview || companyName || companyMotto) && (
