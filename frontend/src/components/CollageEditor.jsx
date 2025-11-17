@@ -185,8 +185,28 @@ const CollageEditor = () => {
     }
   };
 
-  // Get grid layout
-  const getGridLayout = () => {
+  // Handle layout change with debounce to prevent ResizeObserver errors
+  const handleLayoutChange = useCallback((newLayout) => {
+    if (layoutChangeTimeout.current) {
+      clearTimeout(layoutChangeTimeout.current);
+    }
+    
+    layoutChangeTimeout.current = setTimeout(() => {
+      setLayout(newLayout);
+    }, 100);
+  }, []);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (layoutChangeTimeout.current) {
+        clearTimeout(layoutChangeTimeout.current);
+      }
+    };
+  }, []);
+
+  // Get grid layout - memoized to prevent unnecessary recalculations
+  const getGridLayout = useMemo(() => {
     switch (layout) {
       case '2x2':
         return 'grid-cols-2 grid-rows-2';
@@ -199,7 +219,7 @@ const CollageEditor = () => {
       default:
         return 'grid-cols-2 grid-rows-2';
     }
-  };
+  }, [layout]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
