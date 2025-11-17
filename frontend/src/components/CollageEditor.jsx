@@ -207,10 +207,33 @@ const CollageEditor = () => {
         return 'grid-cols-3 grid-rows-3';
       case '4x4':
         return 'grid-cols-4 grid-rows-4';
-      case 'mixed':
-        return 'grid-cols-3 auto-rows-[200px]';
+      case '2x3':
+        return 'grid-cols-2 grid-rows-3';
+      case '3x2':
+        return 'grid-cols-3 grid-rows-2';
+      case '1-large':
+        return 'grid-cols-2 grid-rows-2';
+      case 'portrait':
+        return 'grid-cols-2 grid-rows-4';
+      case 'landscape':
+        return 'grid-cols-4 grid-rows-2';
       default:
         return 'grid-cols-2 grid-rows-2';
+    }
+  }, [layout]);
+
+  // Get photo count based on layout
+  const getPhotoCount = useMemo(() => {
+    switch (layout) {
+      case '2x2': return 4;
+      case '3x3': return 9;
+      case '4x4': return 16;
+      case '2x3': return 6;
+      case '3x2': return 6;
+      case '1-large': return 4;
+      case 'portrait': return 8;
+      case 'landscape': return 8;
+      default: return 4;
     }
   }, [layout]);
 
