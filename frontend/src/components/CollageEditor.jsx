@@ -515,6 +515,21 @@ const CollageEditor = () => {
                     />
                   </div>
 
+                  {/* Company Motto Input */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Motto Perusahaan
+                    </label>
+                    <input
+                      type="text"
+                      data-testid="company-motto-input"
+                      value={companyMotto}
+                      onChange={(e) => setCompanyMotto(e.target.value)}
+                      placeholder="Masukkan motto perusahaan..."
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition-colors"
+                    />
+                  </div>
+
                   {/* Logo Upload */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
