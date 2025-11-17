@@ -14,8 +14,6 @@ const API = `${BACKEND_URL}/api`;
 
 const CollageEditor = () => {
   const [photos, setPhotos] = useState([]);
-  const [letterheads, setLetterheads] = useState([]);
-  const [selectedLetterhead, setSelectedLetterhead] = useState(null);
   const [layout, setLayout] = useState('2x2');
   const [uploading, setUploading] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
@@ -24,6 +22,11 @@ const CollageEditor = () => {
   const [contrast, setContrast] = useState(1);
   const collageRef = useRef(null);
   const layoutChangeTimeout = useRef(null);
+  
+  // Company header state
+  const [companyLogo, setCompanyLogo] = useState(null);
+  const [companyName, setCompanyName] = useState('');
+  const [logoPreview, setLogoPreview] = useState(null);
 
   // Fetch photos
   const fetchPhotos = async () => {
