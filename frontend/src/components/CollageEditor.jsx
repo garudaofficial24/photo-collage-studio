@@ -692,7 +692,7 @@ const CollageEditor = () => {
                   style={{ minHeight: '600px' }}
                 >
                   {/* Company Header */}
-                  {(logoPreview || companyName) && (
+                  {(logoPreview || companyName || companyMotto) && (
                     <div className="h-24 bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 flex items-center justify-center px-6">
                       <div className="flex items-center gap-4 text-white">
                         {logoPreview && (
