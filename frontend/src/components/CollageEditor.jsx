@@ -39,30 +39,44 @@ const CollageEditor = () => {
     }
   };
 
-  // Fetch letterheads
-  const fetchLetterheads = async () => {
-    try {
-      const response = await axios.get(`${API}/letterheads`);
-      setLetterheads(response.data);
-    } catch (error) {
-      console.error('Error fetching letterheads:', error);
-    }
-  };
-
   useEffect(() => {
     fetchPhotos();
-    fetchLetterheads();
-    initializeDefaultLetterheads();
   }, []);
 
-  // Initialize default letterheads
-  const initializeDefaultLetterheads = async () => {
-    const defaultLetterheads = [
-      { name: 'Corporate Blue', color: '#1e40af' },
-      { name: 'Professional Green', color: '#059669' },
-      { name: 'Modern Purple', color: '#7c3aed' },
-    ];
-    // This is a mock - in production, you'd have actual template images
+  // Handle company logo upload
+  const handleLogoUpload = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast.error('Hanya file gambar yang diperbolehkan');
+      return;
+    }
+
+    // Validate file size (max 2MB)
+    if (file.size > 2 * 1024 * 1024) {
+      toast.error('Ukuran file maksimal 2MB');
+      return;
+    }
+
+    setCompanyLogo(file);
+
+    // Create preview
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setLogoPreview(reader.result);
+      toast.success('Logo berhasil diupload');
+    };
+    reader.readAsDataURL(file);
+  };
+
+  // Clear company header
+  const clearCompanyHeader = () => {
+    setCompanyLogo(null);
+    setCompanyName('');
+    setLogoPreview(null);
+    toast.info('Header perusahaan dihapus');
   };
 
   // Handle photo upload
