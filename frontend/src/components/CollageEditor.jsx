@@ -300,25 +300,23 @@ const CollageEditor = () => {
             </Card>
 
             {/* Layout Selection */}
-            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
+            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm overflow-visible">
               <CardContent className="p-6">
                 <h2 className="text-lg font-semibold mb-4 flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   <Grid3x3 className="w-5 h-5 text-purple-600" />
                   Template Layout
                 </h2>
-                <div className="relative z-10">
-                  <Select value={layout} onValueChange={setLayout}>
-                    <SelectTrigger data-testid="layout-selector" className="w-full">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="z-50">
-                      <SelectItem value="2x2">Grid 2x2 (4 Foto)</SelectItem>
-                      <SelectItem value="3x3">Grid 3x3 (9 Foto)</SelectItem>
-                      <SelectItem value="4x4">Grid 4x4 (16 Foto)</SelectItem>
-                      <SelectItem value="mixed">Mixed Layout</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+                <Select value={layout} onValueChange={setLayout}>
+                  <SelectTrigger data-testid="layout-selector" className="w-full">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="2x2">Grid 2x2 (4 Foto)</SelectItem>
+                    <SelectItem value="3x3">Grid 3x3 (9 Foto)</SelectItem>
+                    <SelectItem value="4x4">Grid 4x4 (16 Foto)</SelectItem>
+                    <SelectItem value="mixed">Mixed Layout</SelectItem>
+                  </SelectContent>
+                </Select>
               </CardContent>
             </Card>
 
