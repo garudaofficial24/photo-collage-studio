@@ -694,13 +694,13 @@ const CollageEditor = () => {
 
                   {/* Photo Grid */}
                   <div className={`grid ${getGridLayout} gap-2 p-4`}>
-                    {photos.slice(0, layout === '2x2' ? 4 : layout === '3x3' ? 9 : 16).map((photo, index) => (
+                    {photos.slice(0, getPhotoCount).map((photo, index) => (
                       <div
                         key={photo.id}
                         data-photo-id={photo.id}
                         data-testid={`collage-photo-${index}`}
                         className={`relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group ${
-                          layout === 'mixed' && index === 0 ? 'col-span-2 row-span-2' : ''
+                          layout === '1-large' && index === 0 ? 'col-span-2 row-span-2' : ''
                         }`}
                         onClick={() => setSelectedPhoto(photo)}
                       >
@@ -714,11 +714,13 @@ const CollageEditor = () => {
                     ))}
 
                     {/* Empty slots */}
-                    {photos.length < (layout === '2x2' ? 4 : layout === '3x3' ? 9 : 16) &&
-                      Array.from({ length: (layout === '2x2' ? 4 : layout === '3x3' ? 9 : 16) - photos.length }).map((_, i) => (
+                    {photos.length < getPhotoCount &&
+                      Array.from({ length: getPhotoCount - photos.length }).map((_, i) => (
                         <div
                           key={`empty-${i}`}
-                          className="bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300"
+                          className={`bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300 ${
+                            layout === '1-large' && photos.length === 0 && i === 0 ? 'col-span-2 row-span-2' : ''
+                          }`}
                         >
                           <ImageIcon className="w-8 h-8 text-gray-400" />
                         </div>
