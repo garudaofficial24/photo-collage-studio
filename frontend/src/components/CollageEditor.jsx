@@ -783,20 +783,28 @@ const CollageEditor = () => {
 
                     {/* Empty slots */}
                     {photos.length < getPhotoCount &&
-                      Array.from({ length: getPhotoCount - photos.length }).map((_, i) => (
-                        <div
-                          key={`empty-${i}`}
-                          className={`bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300 ${
-                            (layout === '1-large-landscape' && photos.length === 0 && i === 0) ? 'row-span-2' : ''
-                          } ${
-                            (layout === '1-large-portrait' && photos.length === 0 && i === 0) ? 'col-span-2' : ''
-                          } ${
-                            (layout === '4-small-1-large' && (photos.length + i) === 4) ? 'col-span-2 row-span-2' : ''
-                          }`}
-                        >
-                          <ImageIcon className="w-8 h-8 text-gray-400" />
-                        </div>
-                      ))}
+                      Array.from({ length: getPhotoCount - photos.length }).map((_, i) => {
+                        const slotIndex = photos.length + i;
+                        return (
+                          <div
+                            key={`empty-${i}`}
+                            style={{
+                              order: layout === '4-small-1-large' && slotIndex === 4 ? -1 : slotIndex
+                            }}
+                            className={`bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300 ${
+                              (layout === '1-large-landscape' && photos.length === 0 && i === 0) ? 'row-span-2' : ''
+                            } ${
+                              (layout === '1-large-portrait' && photos.length === 0 && i === 0) ? 'col-span-2' : ''
+                            } ${
+                              (layout === '4-small-1-large' && slotIndex === 4) ? 'col-span-2 row-span-2 aspect-[16/9]' : ''
+                            } ${
+                              (layout === '4-small-1-large' && slotIndex < 4) ? 'aspect-[4/3]' : ''
+                            }`}
+                          >
+                            <ImageIcon className="w-8 h-8 text-gray-400" />
+                          </div>
+                        );
+                      })}
                   </div>
                 </div>
               </CardContent>
