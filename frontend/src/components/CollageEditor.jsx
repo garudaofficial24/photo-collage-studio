@@ -376,59 +376,84 @@ const CollageEditor = () => {
               </CardContent>
             </Card>
 
-            {/* Letterhead Section */}
-            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm relative">
+            {/* Company Header Section */}
+            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
               <CardContent className="p-6">
                 <h2 className="text-lg font-semibold mb-4 flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   <FileText className="w-5 h-5 text-green-600" />
-                  Kop Surat
+                  Logo & Nama Perusahaan
                 </h2>
                 
                 <div className="space-y-4">
-                  {/* Upload Custom Letterhead */}
+                  {/* Company Name Input */}
                   <div>
-                    <label
-                      htmlFor="letterhead-upload"
-                      className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-green-400 hover:bg-gray-50 transition-all"
-                    >
-                      <Plus className="w-5 h-5" />
-                      <span className="text-sm font-medium">Upload Kop Surat Custom</span>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Nama Perusahaan
                     </label>
                     <input
-                      id="letterhead-upload"
-                      data-testid="letterhead-upload-input"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleLetterheadUpload}
-                      className="hidden"
+                      type="text"
+                      data-testid="company-name-input"
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                      placeholder="Masukkan nama perusahaan..."
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition-colors"
                     />
                   </div>
 
-                  {/* Letterhead List */}
-                  <div className="space-y-2">
-                    <p className="text-sm font-medium text-gray-700">Template Tersedia:</p>
-                    {letterheads.length > 0 ? (
-                      letterheads.map((letterhead) => (
-                        <div
-                          key={letterhead.id}
-                          data-testid={`letterhead-item-${letterhead.id}`}
-                          onClick={() => setSelectedLetterhead(letterhead)}
-                          className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${
-                            selectedLetterhead?.id === letterhead.id
-                              ? 'border-green-500 bg-green-50'
-                              : 'border-gray-200 hover:border-green-300'
-                          }`}
-                        >
-                          <p className="text-sm font-medium">{letterhead.name}</p>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="p-4 border-2 border-dashed border-gray-200 rounded-lg text-center">
-                        <FileText className="w-8 h-8 mx-auto mb-2 text-gray-400" />
-                        <p className="text-sm text-gray-500">Belum ada kop surat</p>
-                      </div>
-                    )}
+                  {/* Logo Upload */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Logo Perusahaan
+                    </label>
+                    <label
+                      htmlFor="logo-upload"
+                      className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-green-400 hover:bg-gray-50 transition-all"
+                    >
+                      <Upload className="w-5 h-5" />
+                      <span className="text-sm font-medium">
+                        {companyLogo ? 'Ganti Logo' : 'Upload Logo'}
+                      </span>
+                    </label>
+                    <input
+                      id="logo-upload"
+                      data-testid="logo-upload-input"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleLogoUpload}
+                      className="hidden"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">Max 2MB, format: JPG, PNG, SVG</p>
                   </div>
+
+                  {/* Preview */}
+                  {(logoPreview || companyName) && (
+                    <div className="p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border-2 border-green-200">
+                      <div className="flex items-center gap-3">
+                        {logoPreview && (
+                          <img
+                            src={logoPreview}
+                            alt="Logo Preview"
+                            className="w-12 h-12 object-contain rounded"
+                          />
+                        )}
+                        <div className="flex-1">
+                          {companyName && (
+                            <p className="font-semibold text-gray-800">{companyName}</p>
+                          )}
+                          {!companyName && logoPreview && (
+                            <p className="text-sm text-gray-500">Logo tanpa nama</p>
+                          )}
+                        </div>
+                        <button
+                          data-testid="clear-company-header"
+                          onClick={clearCompanyHeader}
+                          className="p-2 hover:bg-red-100 rounded-lg transition-colors"
+                        >
+                          <Trash2 className="w-4 h-4 text-red-500" />
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
