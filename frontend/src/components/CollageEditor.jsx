@@ -783,6 +783,8 @@ const CollageEditor = () => {
                             (layout === '1-large-landscape' && photos.length === 0 && i === 0) ? 'row-span-2' : ''
                           } ${
                             (layout === '1-large-portrait' && photos.length === 0 && i === 0) ? 'col-span-2' : ''
+                          } ${
+                            (layout === '4-small-1-large' && (photos.length + i) === 4) ? 'col-span-2 row-span-2' : ''
                           }`}
                         >
                           <ImageIcon className="w-8 h-8 text-gray-400" />
