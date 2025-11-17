@@ -705,7 +705,11 @@ const CollageEditor = () => {
                         {companyName && (
                           <div>
                             <h3 className="text-2xl font-bold tracking-wide">{companyName}</h3>
-                            <p className="text-sm opacity-90">Dokumentasi Foto Resmi</p>
+                            {companyMotto ? (
+                              <p className="text-sm opacity-90 italic">"{companyMotto}"</p>
+                            ) : (
+                              <p className="text-sm opacity-90">Dokumentasi Foto Resmi</p>
+                            )}
                           </div>
                         )}
                       </div>
