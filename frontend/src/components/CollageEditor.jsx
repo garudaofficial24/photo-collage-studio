@@ -530,6 +530,52 @@ const CollageEditor = () => {
               </CardContent>
             </Card>
 
+            {/* Paper Orientation Section */}
+            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <h2 className="text-lg font-semibold mb-3 flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  <FileText className="w-5 h-5 text-orange-600" />
+                  Orientasi Kertas
+                </h2>
+                
+                <div className="grid grid-cols-2 gap-2">
+                  {/* Portrait */}
+                  <button
+                    data-testid="paper-portrait"
+                    onClick={() => setPaperOrientation('portrait')}
+                    className={`p-3 rounded-lg border-2 transition-all ${
+                      paperOrientation === 'portrait'
+                        ? 'border-orange-500 bg-orange-50 text-orange-700'
+                        : 'border-gray-200 hover:border-orange-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="w-12 h-16 border-2 border-current rounded"></div>
+                      <span className="text-xs font-semibold">Portrait</span>
+                      <span className="text-xs text-gray-500">A4 Vertikal</span>
+                    </div>
+                  </button>
+                  
+                  {/* Landscape */}
+                  <button
+                    data-testid="paper-landscape"
+                    onClick={() => setPaperOrientation('landscape')}
+                    className={`p-3 rounded-lg border-2 transition-all ${
+                      paperOrientation === 'landscape'
+                        ? 'border-orange-500 bg-orange-50 text-orange-700'
+                        : 'border-gray-200 hover:border-orange-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="w-16 h-12 border-2 border-current rounded"></div>
+                      <span className="text-xs font-semibold">Landscape</span>
+                      <span className="text-xs text-gray-500">A4 Horizontal</span>
+                    </div>
+                  </button>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Company Header Section */}
             <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
               <CardContent className="p-6">
