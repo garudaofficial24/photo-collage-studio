@@ -169,14 +169,17 @@ const CollageEditor = () => {
 
       const imgData = canvas.toDataURL('image/jpeg', 0.95);
       
-      // Calculate dimensions
-      const imgWidth = 210; // A4 width in mm
-      const pageHeight = 297; // A4 height in mm
+      // Calculate dimensions based on paper orientation
+      const isPortrait = paperOrientation === 'portrait';
+      const pageWidth = isPortrait ? 210 : 297; // A4 width in mm
+      const pageHeight = isPortrait ? 297 : 210; // A4 height in mm
+      
+      const imgWidth = pageWidth;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       
-      // Create PDF
+      // Create PDF with selected orientation
       const pdf = new jsPDF({
-        orientation: imgHeight > pageHeight ? 'portrait' : 'portrait',
+        orientation: paperOrientation,
         unit: 'mm',
         format: 'a4',
       });
