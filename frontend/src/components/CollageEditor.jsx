@@ -506,6 +506,20 @@ const CollageEditor = () => {
                     <div className="text-xs font-semibold mb-1">1+2 (V)</div>
                     <div className="text-xs text-gray-500">3 Foto</div>
                   </button>
+                  
+                  {/* 4 Small + 1 Large */}
+                  <button
+                    data-testid="layout-4-small-1-large"
+                    onClick={() => handleLayoutChange('4-small-1-large')}
+                    className={`p-2 rounded-lg border-2 transition-all ${
+                      layout === '4-small-1-large'
+                        ? 'border-purple-500 bg-purple-50'
+                        : 'border-gray-200 hover:border-purple-300'
+                    }`}
+                  >
+                    <div className="text-xs font-semibold mb-1">4+1</div>
+                    <div className="text-xs text-gray-500">5 Foto</div>
+                  </button>
                 </div>
               </CardContent>
             </Card>
