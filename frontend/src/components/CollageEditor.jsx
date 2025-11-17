@@ -306,17 +306,19 @@ const CollageEditor = () => {
                   <Grid3x3 className="w-5 h-5 text-purple-600" />
                   Template Layout
                 </h2>
-                <Select value={layout} onValueChange={setLayout}>
-                  <SelectTrigger data-testid="layout-selector" className="w-full">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="2x2">Grid 2x2 (4 Foto)</SelectItem>
-                    <SelectItem value="3x3">Grid 3x3 (9 Foto)</SelectItem>
-                    <SelectItem value="4x4">Grid 4x4 (16 Foto)</SelectItem>
-                    <SelectItem value="mixed">Mixed Layout</SelectItem>
-                  </SelectContent>
-                </Select>
+                <div className="relative z-10">
+                  <Select value={layout} onValueChange={setLayout}>
+                    <SelectTrigger data-testid="layout-selector" className="w-full">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="z-50">
+                      <SelectItem value="2x2">Grid 2x2 (4 Foto)</SelectItem>
+                      <SelectItem value="3x3">Grid 3x3 (9 Foto)</SelectItem>
+                      <SelectItem value="4x4">Grid 4x4 (16 Foto)</SelectItem>
+                      <SelectItem value="mixed">Mixed Layout</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </CardContent>
             </Card>
 
