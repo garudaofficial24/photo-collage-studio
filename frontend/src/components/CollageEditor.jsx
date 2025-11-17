@@ -257,7 +257,7 @@ const CollageEditor = () => {
       case '4x4': return 16;
       case '2x3': return 6;
       case '3x2': return 6;
-      case '1-large': return 4;
+      case '1-large': return 3;
       case 'portrait': return 8;
       case 'landscape': return 8;
       default: return 4;
