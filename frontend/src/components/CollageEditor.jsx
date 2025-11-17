@@ -482,8 +482,8 @@ const CollageEditor = () => {
                         : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
                     }`}
                   >
-                    <span className="font-medium">1 Besar + 3 Kecil</span>
-                    <span className="text-sm text-gray-500">(4 Foto)</span>
+                    <span className="font-medium">1 Besar + 2 Kecil</span>
+                    <span className="text-sm text-gray-500">(3 Foto)</span>
                   </button>
                 </div>
               </CardContent>
