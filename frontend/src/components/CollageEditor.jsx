@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Upload, Download, RotateCw, Image as ImageIcon, FileText, Trash2, Plus, Grid3x3, Layout, Sparkles } from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
@@ -25,6 +25,7 @@ const CollageEditor = () => {
   const [brightness, setBrightness] = useState(1);
   const [contrast, setContrast] = useState(1);
   const collageRef = useRef(null);
+  const layoutChangeTimeout = useRef(null);
 
   // Fetch photos
   const fetchPhotos = async () => {
