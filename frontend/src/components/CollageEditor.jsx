@@ -76,6 +76,7 @@ const CollageEditor = () => {
   const clearCompanyHeader = () => {
     setCompanyLogo(null);
     setCompanyName('');
+    setCompanyMotto('');
     setLogoPreview(null);
     toast.info('Header perusahaan dihapus');
   };
