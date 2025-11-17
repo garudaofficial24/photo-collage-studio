@@ -370,7 +370,10 @@ const CollageEditor = () => {
                   <Grid3x3 className="w-5 h-5 text-purple-600" />
                   Template Layout
                 </h2>
-                <div className="space-y-2">
+                
+                {/* Grid Layouts */}
+                <div className="space-y-2 mb-4">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Grid Persegi</p>
                   <button
                     data-testid="layout-2x2"
                     onClick={() => handleLayoutChange('2x2')}
@@ -409,18 +412,78 @@ const CollageEditor = () => {
                     <span className="font-medium">Grid 4×4</span>
                     <span className="text-sm text-gray-500">(16 Foto)</span>
                   </button>
-                  
+                </div>
+
+                {/* Rectangle Layouts */}
+                <div className="space-y-2 mb-4">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Grid Persegi Panjang</p>
                   <button
-                    data-testid="layout-mixed"
-                    onClick={() => handleLayoutChange('mixed')}
+                    data-testid="layout-2x3"
+                    onClick={() => handleLayoutChange('2x3')}
                     className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
-                      layout === 'mixed'
+                      layout === '2x3'
                         ? 'border-purple-500 bg-purple-50 text-purple-700'
                         : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
                     }`}
                   >
-                    <span className="font-medium">Mixed Layout</span>
-                    <span className="text-sm text-gray-500">(Custom)</span>
+                    <span className="font-medium">Grid 2×3</span>
+                    <span className="text-sm text-gray-500">(6 Foto)</span>
+                  </button>
+                  
+                  <button
+                    data-testid="layout-3x2"
+                    onClick={() => handleLayoutChange('3x2')}
+                    className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
+                      layout === '3x2'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="font-medium">Grid 3×2</span>
+                    <span className="text-sm text-gray-500">(6 Foto)</span>
+                  </button>
+                </div>
+
+                {/* Special Layouts */}
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Layout Spesial</p>
+                  <button
+                    data-testid="layout-portrait"
+                    onClick={() => handleLayoutChange('portrait')}
+                    className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
+                      layout === 'portrait'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="font-medium">Portrait 2×4</span>
+                    <span className="text-sm text-gray-500">(8 Foto)</span>
+                  </button>
+                  
+                  <button
+                    data-testid="layout-landscape"
+                    onClick={() => handleLayoutChange('landscape')}
+                    className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
+                      layout === 'landscape'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="font-medium">Landscape 4×2</span>
+                    <span className="text-sm text-gray-500">(8 Foto)</span>
+                  </button>
+                  
+                  <button
+                    data-testid="layout-1-large"
+                    onClick={() => handleLayoutChange('1-large')}
+                    className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
+                      layout === '1-large'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="font-medium">1 Besar + 3 Kecil</span>
+                    <span className="text-sm text-gray-500">(4 Foto)</span>
                   </button>
                 </div>
               </CardContent>
