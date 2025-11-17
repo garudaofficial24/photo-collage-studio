@@ -119,28 +119,6 @@ const CollageEditor = () => {
     }
   };
 
-  // Handle letterhead upload
-  const handleLetterheadUpload = async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('name', file.name);
-
-      await axios.post(`${API}/letterheads/upload`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-
-      toast.success('Kop surat berhasil diupload');
-      fetchLetterheads();
-    } catch (error) {
-      console.error('Error uploading letterhead:', error);
-      toast.error('Gagal upload kop surat');
-    }
-  };
-
   // Process image
   const processImage = async (operation, value) => {
     if (!selectedPhoto) return;
