@@ -558,12 +558,23 @@ const CollageEditor = () => {
                   className="bg-white rounded-xl shadow-inner border-2 border-gray-100 overflow-hidden"
                   style={{ minHeight: '600px' }}
                 >
-                  {/* Letterhead */}
-                  {selectedLetterhead && (
-                    <div className="h-24 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white">
-                      <div className="text-center">
-                        <h3 className="text-2xl font-bold">{selectedLetterhead.name}</h3>
-                        <p className="text-sm opacity-90">Kop Surat Resmi Perusahaan</p>
+                  {/* Company Header */}
+                  {(logoPreview || companyName) && (
+                    <div className="h-24 bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 flex items-center justify-center px-6">
+                      <div className="flex items-center gap-4 text-white">
+                        {logoPreview && (
+                          <img
+                            src={logoPreview}
+                            alt="Company Logo"
+                            className="w-16 h-16 object-contain bg-white/20 backdrop-blur-sm rounded-lg p-2"
+                          />
+                        )}
+                        {companyName && (
+                          <div>
+                            <h3 className="text-2xl font-bold tracking-wide">{companyName}</h3>
+                            <p className="text-sm opacity-90">Dokumentasi Foto Resmi</p>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
