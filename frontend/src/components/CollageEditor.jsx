@@ -323,7 +323,7 @@ const CollageEditor = () => {
             </Card>
 
             {/* Letterhead Section */}
-            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
+            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm relative">
               <CardContent className="p-6">
                 <h2 className="text-lg font-semibold mb-4 flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   <FileText className="w-5 h-5 text-green-600" />
