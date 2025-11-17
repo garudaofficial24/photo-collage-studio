@@ -152,29 +152,56 @@ const CollageEditor = () => {
     try {
       toast.info('Menghasilkan PDF...');
       
+      // Create canvas from collage preview
       const canvas = await html2canvas(collageRef.current, {
         scale: 2,
         useCORS: true,
         logging: false,
+        backgroundColor: '#ffffff',
+        allowTaint: true,
+        imageTimeout: 15000,
       });
 
-      const imgData = canvas.toDataURL('image/png');
+      const imgData = canvas.toDataURL('image/jpeg', 0.95);
+      
+      // Calculate dimensions
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      // Create PDF
       const pdf = new jsPDF({
-        orientation: 'portrait',
+        orientation: imgHeight > pageHeight ? 'portrait' : 'portrait',
         unit: 'mm',
         format: 'a4',
       });
 
-      const imgWidth = 210; // A4 width in mm
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
 
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-      pdf.save(`kolase-foto-${Date.now()}.pdf`);
+      // Add first page
+      pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
 
+      // Add more pages if content is longer than one page
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+
+      // Generate filename
+      const timestamp = new Date().toISOString().slice(0, 10);
+      const fileName = companyName 
+        ? `${companyName.replace(/\s+/g, '-')}-${timestamp}.pdf`
+        : `kolase-foto-${timestamp}.pdf`;
+
+      pdf.save(fileName);
       toast.success('PDF berhasil didownload!');
     } catch (error) {
       console.error('Error generating PDF:', error);
-      toast.error('Gagal menghasilkan PDF');
+      toast.error('Gagal menghasilkan PDF. Pastikan semua foto sudah dimuat.');
     }
   };
 
