@@ -240,7 +240,9 @@ const CollageEditor = () => {
         return 'grid-cols-2 grid-rows-3';
       case '3x2':
         return 'grid-cols-3 grid-rows-2';
-      case '1-large':
+      case '1-large-landscape':
+        return 'grid-cols-2 grid-rows-2';
+      case '1-large-portrait':
         return 'grid-cols-2 grid-rows-2';
       case 'portrait':
         return 'grid-cols-2 grid-rows-4';
@@ -259,7 +261,8 @@ const CollageEditor = () => {
       case '4x4': return 16;
       case '2x3': return 6;
       case '3x2': return 6;
-      case '1-large': return 3;
+      case '1-large-landscape': return 3;
+      case '1-large-portrait': return 3;
       case 'portrait': return 8;
       case 'landscape': return 8;
       default: return 4;
