@@ -556,7 +556,7 @@ const CollageEditor = () => {
                   </div>
 
                   {/* Preview */}
-                  {(logoPreview || companyName) && (
+                  {(logoPreview || companyName || companyMotto) && (
                     <div className="p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border-2 border-green-200">
                       <div className="flex items-center gap-3">
                         {logoPreview && (
@@ -570,7 +570,10 @@ const CollageEditor = () => {
                           {companyName && (
                             <p className="font-semibold text-gray-800">{companyName}</p>
                           )}
-                          {!companyName && logoPreview && (
+                          {companyMotto && (
+                            <p className="text-sm text-gray-600 italic">"{companyMotto}"</p>
+                          )}
+                          {!companyName && !companyMotto && logoPreview && (
                             <p className="text-sm text-gray-500">Logo tanpa nama</p>
                           )}
                         </div>
