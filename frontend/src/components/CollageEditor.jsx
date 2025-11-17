@@ -479,15 +479,28 @@ const CollageEditor = () => {
                   </button>
                   
                   <button
-                    data-testid="layout-1-large"
-                    onClick={() => handleLayoutChange('1-large')}
+                    data-testid="layout-1-large-landscape"
+                    onClick={() => handleLayoutChange('1-large-landscape')}
                     className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
-                      layout === '1-large'
+                      layout === '1-large-landscape'
                         ? 'border-purple-500 bg-purple-50 text-purple-700'
                         : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
                     }`}
                   >
-                    <span className="font-medium">1 Besar + 2 Kecil</span>
+                    <span className="font-medium">1 Besar + 2 Kecil (Landscape)</span>
+                    <span className="text-sm text-gray-500">(3 Foto)</span>
+                  </button>
+                  
+                  <button
+                    data-testid="layout-1-large-portrait"
+                    onClick={() => handleLayoutChange('1-large-portrait')}
+                    className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
+                      layout === '1-large-portrait'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="font-medium">1 Besar + 2 Kecil (Portrait)</span>
                     <span className="text-sm text-gray-500">(3 Foto)</span>
                   </button>
                 </div>
