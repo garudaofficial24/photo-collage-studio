@@ -766,9 +766,9 @@ const CollageEditor = () => {
                         } ${
                           (layout === '4-small-1-large' && index === 4) ? 'col-span-2 row-span-2' : ''
                         } ${
-                          (layout === '4-small-1-large' && index < 4) ? 'aspect-[4/3]' : ''
+                          (layout === '4-small-1-large' && index < 4) ? 'aspect-[3/2]' : ''
                         } ${
-                          (layout === '4-small-1-large' && index === 4) ? 'aspect-[16/9]' : ''
+                          (layout === '4-small-1-large' && index === 4) ? 'aspect-[4/3]' : ''
                         }`}
                         onClick={() => setSelectedPhoto(photo)}
                       >
