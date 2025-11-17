@@ -756,6 +756,9 @@ const CollageEditor = () => {
                         key={photo.id}
                         data-photo-id={photo.id}
                         data-testid={`collage-photo-${index}`}
+                        style={{
+                          order: layout === '4-small-1-large' && index === 4 ? -1 : index
+                        }}
                         className={`relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group ${
                           (layout === '1-large-landscape' && index === 0) ? 'row-span-2' : ''
                         } ${
@@ -765,7 +768,7 @@ const CollageEditor = () => {
                         } ${
                           (layout === '4-small-1-large' && index < 4) ? 'aspect-[4/3]' : ''
                         } ${
-                          (layout === '4-small-1-large' && index === 4) ? 'aspect-[3/4]' : ''
+                          (layout === '4-small-1-large' && index === 4) ? 'aspect-[16/9]' : ''
                         }`}
                         onClick={() => setSelectedPhoto(photo)}
                       >
