@@ -126,16 +126,13 @@ class CollageAPITester:
             files = {
                 'file': ('test_letterhead.png', test_image, 'image/png')
             }
-            data = {
-                'name': 'Test Letterhead'
-            }
             
+            # Send name as query parameter
             success, response = self.run_test(
                 "Letterhead Upload",
                 "POST",
-                "letterheads/upload",
+                "letterheads/upload?name=Test%20Letterhead",
                 200,
-                data=data,
                 files=files
             )
             
