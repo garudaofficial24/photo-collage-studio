@@ -4,8 +4,6 @@ import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Slider } from './ui/slider';
 import { toast } from 'sonner';
 import jsPDF from 'jspdf';
