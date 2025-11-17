@@ -327,7 +327,7 @@ const CollageEditor = () => {
                   <Grid3x3 className="w-5 h-5 text-purple-600" />
                   Template Layout
                 </h2>
-                <Select value={layout} onValueChange={setLayout}>
+                <Select value={layout} onValueChange={handleLayoutChange}>
                   <SelectTrigger data-testid="layout-selector" className="w-full">
                     <SelectValue />
                   </SelectTrigger>
