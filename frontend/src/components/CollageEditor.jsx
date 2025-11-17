@@ -321,23 +321,65 @@ const CollageEditor = () => {
             </Card>
 
             {/* Layout Selection */}
-            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm overflow-visible">
+            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
               <CardContent className="p-6">
                 <h2 className="text-lg font-semibold mb-4 flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   <Grid3x3 className="w-5 h-5 text-purple-600" />
                   Template Layout
                 </h2>
-                <Select value={layout} onValueChange={handleLayoutChange}>
-                  <SelectTrigger data-testid="layout-selector" className="w-full">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="2x2">Grid 2x2 (4 Foto)</SelectItem>
-                    <SelectItem value="3x3">Grid 3x3 (9 Foto)</SelectItem>
-                    <SelectItem value="4x4">Grid 4x4 (16 Foto)</SelectItem>
-                    <SelectItem value="mixed">Mixed Layout</SelectItem>
-                  </SelectContent>
-                </Select>
+                <div className="space-y-2">
+                  <button
+                    data-testid="layout-2x2"
+                    onClick={() => handleLayoutChange('2x2')}
+                    className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
+                      layout === '2x2'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="font-medium">Grid 2×2</span>
+                    <span className="text-sm text-gray-500">(4 Foto)</span>
+                  </button>
+                  
+                  <button
+                    data-testid="layout-3x3"
+                    onClick={() => handleLayoutChange('3x3')}
+                    className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
+                      layout === '3x3'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="font-medium">Grid 3×3</span>
+                    <span className="text-sm text-gray-500">(9 Foto)</span>
+                  </button>
+                  
+                  <button
+                    data-testid="layout-4x4"
+                    onClick={() => handleLayoutChange('4x4')}
+                    className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
+                      layout === '4x4'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="font-medium">Grid 4×4</span>
+                    <span className="text-sm text-gray-500">(16 Foto)</span>
+                  </button>
+                  
+                  <button
+                    data-testid="layout-mixed"
+                    onClick={() => handleLayoutChange('mixed')}
+                    className={`w-full p-3 rounded-lg border-2 transition-all flex items-center justify-between ${
+                      layout === 'mixed'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="font-medium">Mixed Layout</span>
+                    <span className="text-sm text-gray-500">(Custom)</span>
+                  </button>
+                </div>
               </CardContent>
             </Card>
 
