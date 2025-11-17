@@ -26,6 +26,7 @@ const CollageEditor = () => {
   // Company header state
   const [companyLogo, setCompanyLogo] = useState(null);
   const [companyName, setCompanyName] = useState('');
+  const [companyMotto, setCompanyMotto] = useState('');
   const [logoPreview, setLogoPreview] = useState(null);
 
   // Fetch photos
