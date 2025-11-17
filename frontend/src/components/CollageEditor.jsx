@@ -23,6 +23,9 @@ const CollageEditor = () => {
   const collageRef = useRef(null);
   const layoutChangeTimeout = useRef(null);
   
+  // Paper orientation state
+  const [paperOrientation, setPaperOrientation] = useState('portrait'); // 'portrait' or 'landscape'
+  
   // Company header state
   const [companyLogo, setCompanyLogo] = useState(null);
   const [companyName, setCompanyName] = useState('');
