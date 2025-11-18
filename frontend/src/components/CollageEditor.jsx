@@ -820,7 +820,7 @@ const CollageEditor = () => {
                   )}
 
                   {/* Photo Grid */}
-                  <div className={`grid ${getGridLayout} gap-2 p-6 w-full h-full ${layout === '4-small-1-large' ? 'min-h-[500px]' : ''}`}>
+                  <div className={`grid ${getGridLayout} ${layout === '4-small-1-large' ? 'gap-3 p-4' : 'gap-2 p-6'} w-full h-full`}>
                     {photos.slice(0, getPhotoCount).map((photo, index) => (
                       <div
                         key={photo.id}
@@ -836,9 +836,7 @@ const CollageEditor = () => {
                         } ${
                           (layout === '4-small-1-large' && index === 4) ? 'col-span-2 row-span-2' : ''
                         } ${
-                          (layout === '4-small-1-large' && index < 4) ? 'aspect-[3/2]' : ''
-                        } ${
-                          (layout === '4-small-1-large' && index === 4) ? 'aspect-[4/3]' : ''
+                          layout !== '4-small-1-large' ? 'aspect-square' : ''
                         }`}
                         onClick={() => setSelectedPhoto(photo)}
                       >
