@@ -779,12 +779,12 @@ const CollageEditor = () => {
                 <div
                   ref={collageRef}
                   data-testid="collage-preview"
-                  className={`bg-white rounded-xl shadow-inner border-2 border-gray-100 overflow-hidden transition-all ${
-                    paperOrientation === 'landscape' ? 'max-w-4xl' : 'max-w-2xl'
+                  className={`bg-white shadow-inner overflow-hidden transition-all mx-auto ${
+                    paperOrientation === 'landscape' ? 'w-full max-w-5xl' : 'w-full max-w-3xl'
                   }`}
                   style={{ 
-                    minHeight: '600px',
-                    aspectRatio: paperOrientation === 'portrait' ? '210/297' : '297/210'
+                    aspectRatio: paperOrientation === 'portrait' ? '210/297' : '297/210',
+                    padding: '0'
                   }}
                 >
                   {/* Company Header */}
