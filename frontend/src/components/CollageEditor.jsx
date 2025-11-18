@@ -157,25 +157,44 @@ const CollageEditor = () => {
     try {
       toast.info('Menghasilkan PDF...');
       
-      // Create canvas from collage preview
+      // Create canvas from collage preview with higher quality
       const canvas = await html2canvas(collageRef.current, {
-        scale: 2,
+        scale: 3,
         useCORS: true,
         logging: false,
         backgroundColor: '#ffffff',
         allowTaint: true,
         imageTimeout: 15000,
+        width: collageRef.current.offsetWidth,
+        height: collageRef.current.offsetHeight,
       });
 
-      const imgData = canvas.toDataURL('image/jpeg', 0.95);
+      const imgData = canvas.toDataURL('image/jpeg', 1.0);
       
       // Calculate dimensions based on paper orientation
       const isPortrait = paperOrientation === 'portrait';
       const pageWidth = isPortrait ? 210 : 297; // A4 width in mm
       const pageHeight = isPortrait ? 297 : 210; // A4 height in mm
       
-      const imgWidth = pageWidth;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      // Calculate image dimensions to fit perfectly in A4
+      const canvasRatio = canvas.width / canvas.height;
+      const pageRatio = pageWidth / pageHeight;
+      
+      let imgWidth, imgHeight;
+      
+      if (canvasRatio > pageRatio) {
+        // Image is wider, fit to width
+        imgWidth = pageWidth;
+        imgHeight = pageWidth / canvasRatio;
+      } else {
+        // Image is taller, fit to height
+        imgHeight = pageHeight;
+        imgWidth = pageHeight * canvasRatio;
+      }
+      
+      // Center the image on the page
+      const xOffset = (pageWidth - imgWidth) / 2;
+      const yOffset = (pageHeight - imgHeight) / 2;
       
       // Create PDF with selected orientation
       const pdf = new jsPDF({
@@ -184,20 +203,8 @@ const CollageEditor = () => {
         format: 'a4',
       });
 
-      let heightLeft = imgHeight;
-      let position = 0;
-
-      // Add first page
-      pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-
-      // Add more pages if content is longer than one page
-      while (heightLeft > 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-      }
+      // Add image centered on page
+      pdf.addImage(imgData, 'JPEG', xOffset, yOffset, imgWidth, imgHeight, undefined, 'FAST')
 
       // Generate filename
       const timestamp = new Date().toISOString().slice(0, 10);
