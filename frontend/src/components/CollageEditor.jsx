@@ -29,6 +29,9 @@ const CollageEditor = () => {
   // Paper orientation state
   const [paperOrientation, setPaperOrientation] = useState('portrait');
   
+  // Image fit/fill state
+  const [imageObjectFit, setImageObjectFit] = useState('cover'); // 'cover' (fill) or 'contain' (fit)
+  
   // Company header state
   const [companyLogo, setCompanyLogo] = useState(null);
   const [companyName, setCompanyName] = useState('');
