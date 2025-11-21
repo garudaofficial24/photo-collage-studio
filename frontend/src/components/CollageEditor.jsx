@@ -615,6 +615,61 @@ const CollageEditor = () => {
                     </div>
                   </CardContent>
                 </Card>
+
+                {/* Image Fit/Fill Control */}
+                <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                  <CardContent className="p-5">
+                    <h3 className="text-base font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <Sliders className="w-4 h-4 text-blue-600" />
+                      Mode Tampilan Foto
+                    </h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      <button
+                        data-testid="image-fill"
+                        onClick={() => setImageObjectFit('cover')}
+                        className={`p-4 rounded-xl border-2 transition-all ${
+                          imageObjectFit === 'cover'
+                            ? 'border-blue-500 bg-blue-50'
+                            : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                        }`}
+                      >
+                        <div className="flex flex-col items-center gap-3">
+                          <div className={`w-16 h-12 rounded border-2 overflow-hidden transition-colors ${
+                            imageObjectFit === 'cover' ? 'border-blue-500' : 'border-gray-300'
+                          }`}>
+                            <div className="w-full h-full bg-gradient-to-br from-blue-200 to-blue-300"></div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-sm font-semibold text-gray-900">Fill</div>
+                            <div className="text-xs text-gray-500">Penuh, crop jika perlu</div>
+                          </div>
+                        </div>
+                      </button>
+                      
+                      <button
+                        data-testid="image-fit"
+                        onClick={() => setImageObjectFit('contain')}
+                        className={`p-4 rounded-xl border-2 transition-all ${
+                          imageObjectFit === 'contain'
+                            ? 'border-blue-500 bg-blue-50'
+                            : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                        }`}
+                      >
+                        <div className="flex flex-col items-center gap-3">
+                          <div className={`w-16 h-12 rounded border-2 flex items-center justify-center transition-colors ${
+                            imageObjectFit === 'contain' ? 'border-blue-500' : 'border-gray-300'
+                          }`}>
+                            <div className="w-8 h-10 bg-gradient-to-br from-blue-200 to-blue-300 rounded"></div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-sm font-semibold text-gray-900">Fit</div>
+                            <div className="text-xs text-gray-500">Tampil semua, no crop</div>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+                  </CardContent>
+                </Card>
               </TabsContent>
 
               {/* Branding Tab */}
