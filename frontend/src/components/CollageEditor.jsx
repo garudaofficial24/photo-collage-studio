@@ -274,6 +274,23 @@ const CollageEditor = () => {
     }
   }, [layout]);
 
+  // Get grid rows count
+  const getGridRows = useMemo(() => {
+    switch (layout) {
+      case '2x2': return 2;
+      case '3x3': return 3;
+      case '4x4': return 4;
+      case '2x3': return 3;
+      case '3x2': return 2;
+      case '1-large-landscape': return 2;
+      case '1-large-portrait': return 2;
+      case '4-small-1-large': return 2;
+      case 'portrait': return 4;
+      case 'landscape': return 2;
+      default: return 2;
+    }
+  }, [layout]);
+
   const layoutTemplates = [
     { id: '2x2', name: '2×2', count: 4, icon: '▦' },
     { id: '3x3', name: '3×3', count: 9, icon: '▦' },
