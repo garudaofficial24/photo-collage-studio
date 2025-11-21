@@ -1016,7 +1016,10 @@ const CollageEditor = () => {
                     } ${
                       (layout === '4-small-1-large' && slotIndex === 4) ? 'col-span-2 row-span-2' : ''
                     } ${
-                      layout !== '4-small-1-large' ? 'aspect-square' : ''
+                      // Apply aspect-square only to non-large slots
+                      (layout !== '4-small-1-large' && 
+                       !(layout === '1-large-landscape' && photos.length === 0 && i === 0) && 
+                       !(layout === '1-large-portrait' && photos.length === 0 && i === 0)) ? 'aspect-square' : ''
                     }`}
                   >
                     <ImageIcon className="w-8 h-8 text-gray-300 mb-2" />
