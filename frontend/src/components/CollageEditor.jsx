@@ -881,7 +881,7 @@ const CollageEditor = () => {
                   <div
                     ref={collageRef}
                     data-testid="collage-preview"
-                    className={`bg-white shadow-2xl overflow-hidden transition-transform duration-300 ${
+                    className={`bg-white shadow-2xl overflow-hidden transition-transform duration-300 flex flex-col ${
                       paperOrientation === 'landscape' 
                         ? 'w-full max-w-[90vw] lg:max-w-4xl' 
                         : 'w-full max-w-[80vw] sm:max-w-2xl lg:max-w-3xl'
