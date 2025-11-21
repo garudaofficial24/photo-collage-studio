@@ -1074,7 +1074,7 @@ const CollageEditor = () => {
       <div style={{ position: 'absolute', left: '-9999px', top: '0' }}>
         <div
           ref={pdfCollageRef}
-          className={`bg-white overflow-hidden`}
+          className={`bg-white overflow-hidden flex flex-col`}
           style={{ 
             width: paperOrientation === 'portrait' ? '210mm' : '297mm',
             height: paperOrientation === 'portrait' ? '297mm' : '210mm',
