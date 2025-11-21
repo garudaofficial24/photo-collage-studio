@@ -826,11 +826,54 @@ const CollageEditor = () => {
                           </p>
                         </div>
                       </div>
-                      <DialogClose asChild>
-                        <Button variant="ghost" size="sm" className="text-white hover:bg-gray-700">
-                          <X className="w-5 h-5" />
-                        </Button>
-                      </DialogClose>
+                      
+                      <div className="flex items-center gap-2">
+                        {/* Zoom Controls */}
+                        <div className="flex items-center gap-1 bg-gray-700/50 rounded-lg p-1">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setZoomLevel(Math.max(0.5, zoomLevel - 0.25))}
+                            disabled={zoomLevel <= 0.5}
+                            className="text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed h-8 w-8 p-0"
+                            title="Zoom Out"
+                          >
+                            <ZoomOut className="w-4 h-4" />
+                          </Button>
+                          
+                          <span className="text-white text-xs font-medium px-2 min-w-[3rem] text-center">
+                            {Math.round(zoomLevel * 100)}%
+                          </span>
+                          
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setZoomLevel(Math.min(3, zoomLevel + 0.25))}
+                            disabled={zoomLevel >= 3}
+                            className="text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed h-8 w-8 p-0"
+                            title="Zoom In"
+                          >
+                            <ZoomIn className="w-4 h-4" />
+                          </Button>
+                          
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setZoomLevel(1)}
+                            disabled={zoomLevel === 1}
+                            className="text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed h-8 w-8 p-0 ml-1"
+                            title="Reset Zoom"
+                          >
+                            <Maximize2 className="w-4 h-4" />
+                          </Button>
+                        </div>
+                        
+                        <DialogClose asChild>
+                          <Button variant="ghost" size="sm" className="text-white hover:bg-gray-700">
+                            <X className="w-5 h-5" />
+                          </Button>
+                        </DialogClose>
+                      </div>
                     </div>
                     
                     {/* Preview Content */}
