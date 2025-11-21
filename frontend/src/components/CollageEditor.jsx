@@ -911,21 +911,19 @@ const CollageEditor = () => {
                     </div>
                     
                     {/* Preview Content */}
-                    <div className="flex-1 overflow-auto p-4 sm:p-6 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                    <div className="flex-1 overflow-auto p-4 sm:p-6 bg-gradient-to-br from-gray-800 to-gray-900 flex items-start justify-center">
                   <div
                     ref={collageRef}
                     data-testid="collage-preview"
-                    className={`bg-white shadow-2xl overflow-hidden transition-transform duration-300 flex flex-col ${
-                      paperOrientation === 'landscape' 
-                        ? 'w-full max-w-5xl' 
-                        : 'w-full max-w-3xl'
-                    }`}
+                    className="bg-white shadow-2xl overflow-hidden transition-transform duration-300 flex flex-col my-4"
                     style={{ 
-                      aspectRatio: paperOrientation === 'portrait' ? '210/297' : '297/210',
-                      maxHeight: '85vh',
+                      width: paperOrientation === 'portrait' ? '210mm' : '297mm',
+                      height: paperOrientation === 'portrait' ? '297mm' : '210mm',
+                      minWidth: paperOrientation === 'portrait' ? '210mm' : '297mm',
+                      minHeight: paperOrientation === 'portrait' ? '297mm' : '210mm',
                       padding: '0',
                       transform: `scale(${zoomLevel})`,
-                      transformOrigin: 'center'
+                      transformOrigin: 'top center'
                     }}
                   >
                     {/* Company Header */}
