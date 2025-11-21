@@ -1175,7 +1175,7 @@ const CollageEditor = () => {
                     style={{
                       order: layout === '4-small-1-large' && slotIndex === 4 ? -1 : slotIndex
                     }}
-                    className={`bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-gray-300 h-full ${
+                    className={`bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-gray-300 w-full h-full min-h-0 ${
                       (layout === '1-large-landscape' && photos.length === 0 && i === 0) ? 'row-span-2' : ''
                     } ${
                       (layout === '1-large-portrait' && photos.length === 0 && i === 0) ? 'col-span-2' : ''
