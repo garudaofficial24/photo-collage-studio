@@ -1069,8 +1069,7 @@ const CollageEditor = () => {
               'gap-2 p-3'
             }`}
             style={{
-              gridAutoRows: '1fr',
-              gridTemplateRows: layout === '4-small-1-large' ? 'repeat(2, 1fr)' : undefined
+              gridTemplateRows: `repeat(${getGridRows}, 1fr)`
             }}
           >
             {photos.slice(0, getPhotoCount).map((photo, index) => (
