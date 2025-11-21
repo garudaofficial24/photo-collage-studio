@@ -808,8 +808,8 @@ const CollageEditor = () => {
                     </CardContent>
                   </Card>
                 </DialogTrigger>
-                <DialogContent className="max-w-6xl w-full h-[90vh] p-0 bg-gray-900">
-                  <div className="relative h-full flex flex-col">
+                <DialogContent className="max-w-[95vw] w-full max-h-[95vh] h-auto p-0 bg-gray-900 overflow-hidden">
+                  <div className="relative max-h-[95vh] flex flex-col">
                     {/* Header */}
                     <div className="flex items-center justify-between p-4 bg-gray-800 border-b border-gray-700">
                       <div className="flex items-center gap-3">
