@@ -1037,7 +1037,9 @@ const CollageEditor = () => {
           )}
 
           {/* Photo Grid */}
-          <div className={`grid ${getGridLayout} w-full h-full ${
+          <div className={`grid ${getGridLayout} w-full ${
+            (logoPreview || companyName || companyMotto) ? 'h-[calc(100%-5rem)]' : 'h-full'
+          } ${
             layout === '4-small-1-large' ? 'gap-2 p-3' : 
             layout === '4x4' ? 'gap-1 p-2' : 
             layout === '3x3' ? 'gap-1.5 p-2' : 
