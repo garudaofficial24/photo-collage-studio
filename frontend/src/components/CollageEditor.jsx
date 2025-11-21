@@ -852,7 +852,12 @@ const CollageEditor = () => {
                     )}
 
                     {/* Photo Grid */}
-                    <div className={`grid ${getGridLayout} ${layout === '4-small-1-large' ? 'gap-3 p-4' : 'gap-2 p-6'} w-full h-full`}>
+                    <div className={`grid ${getGridLayout} w-full h-full ${
+                      layout === '4-small-1-large' ? 'gap-2 p-3' : 
+                      layout === '4x4' ? 'gap-1 p-2' : 
+                      layout === '3x3' ? 'gap-1.5 p-2' : 
+                      'gap-2 p-3'
+                    }`}>
                       {photos.slice(0, getPhotoCount).map((photo, index) => (
                         <div
                           key={photo.id}
