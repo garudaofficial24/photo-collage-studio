@@ -142,6 +142,9 @@ backend:
       - working: true
         agent: "main"
         comment: "DELETE /api/photos/{filename} endpoint working"
+      - working: true
+        agent: "testing"
+        comment: "Comprehensive testing completed: Delete existing photo ✅ (returns 200, file becomes inaccessible), Delete non-existent photo ✅ (returns 404), Photo list updates correctly after deletion ✅, Malformed photo IDs handled properly ✅. Note: Endpoint uses photo ID, not filename as originally specified in review request."
 
 frontend:
   - task: "Modal-based preview system"
