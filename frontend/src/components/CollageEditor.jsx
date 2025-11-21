@@ -170,6 +170,20 @@ const CollageEditor = () => {
         return;
       }
       
+      // Wait for all images to load
+      const images = targetRef.querySelectorAll('img');
+      await Promise.all(
+        Array.from(images).map(img => {
+          if (img.complete) return Promise.resolve();
+          return new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+            // Add timeout to prevent hanging
+            setTimeout(resolve, 5000);
+          });
+        })
+      );
+      
       const canvas = await html2canvas(targetRef, {
         scale: 3,
         useCORS: true,
