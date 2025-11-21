@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
-import { Upload, Download, RotateCw, Image as ImageIcon, FileText, Trash2, Plus, Grid3x3, Layout, Sparkles, Building2, Quote, Camera, Sliders, Settings, ChevronRight, Check } from 'lucide-react';
+import { Upload, Download, RotateCw, Image as ImageIcon, FileText, Trash2, Plus, Grid3x3, Layout, Sparkles, Building2, Quote, Camera, Sliders, Settings, ChevronRight, Check, Eye, X } from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from './ui/dialog';
 import { Slider } from './ui/slider';
 import { toast } from 'sonner';
 import jsPDF from 'jspdf';
