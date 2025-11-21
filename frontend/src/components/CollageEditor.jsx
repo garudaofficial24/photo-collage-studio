@@ -878,7 +878,9 @@ const CollageEditor = () => {
                           <img
                             src={`${API}/photos/${photo.id}/file`}
                             alt={photo.original_filename}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            className={`w-full h-full group-hover:scale-110 transition-transform duration-300 ${
+                              imageObjectFit === 'cover' ? 'object-cover' : 'object-contain bg-gray-50'
+                            }`}
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                           <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity">
