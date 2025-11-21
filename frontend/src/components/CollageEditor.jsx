@@ -952,10 +952,11 @@ const CollageEditor = () => {
                     {/* Photo Grid */}
                     <div 
                       className={`grid ${getGridLayout} w-full flex-1 ${
-                        layout === '4-small-1-large' ? 'gap-2 p-3' : 
-                        layout === '4x4' ? 'gap-1 p-2' : 
-                        layout === '3x3' ? 'gap-1.5 p-2' : 
-                        'gap-2 p-3'
+                        layout === '4-small-1-large' ? 'gap-1.5 p-2' : 
+                        layout === '4x4' ? 'gap-0.5 p-1.5' : 
+                        layout === '3x3' ? 'gap-1 p-1.5' : 
+                        layout === 'portrait' || layout === 'landscape' ? 'gap-1 p-2' :
+                        'gap-1.5 p-2'
                       }`}
                       style={{
                         gridTemplateRows: `repeat(${getGridRows}, 1fr)`
