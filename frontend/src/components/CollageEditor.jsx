@@ -1053,7 +1053,7 @@ const CollageEditor = () => {
                 <img
                   src={`${API}/photos/${photo.id}/file`}
                   alt={photo.original_filename}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full ${imageObjectFit === 'cover' ? 'object-cover' : 'object-contain bg-gray-50'}`}
                   crossOrigin="anonymous"
                 />
               </div>
