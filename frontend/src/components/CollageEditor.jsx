@@ -156,15 +156,23 @@ const CollageEditor = () => {
     try {
       toast.info('Menghasilkan PDF...');
       
-      const canvas = await html2canvas(collageRef.current, {
+      // Use hidden ref for PDF generation
+      const targetRef = pdfCollageRef.current || collageRef.current;
+      
+      if (!targetRef) {
+        toast.error('Gagal menghasilkan PDF. Pastikan semua foto sudah dimuat.');
+        return;
+      }
+      
+      const canvas = await html2canvas(targetRef, {
         scale: 3,
         useCORS: true,
         logging: false,
         backgroundColor: '#ffffff',
         allowTaint: true,
         imageTimeout: 15000,
-        width: collageRef.current.offsetWidth,
-        height: collageRef.current.offsetHeight,
+        width: targetRef.offsetWidth,
+        height: targetRef.offsetHeight,
       });
 
       const imgData = canvas.toDataURL('image/jpeg', 1.0);
