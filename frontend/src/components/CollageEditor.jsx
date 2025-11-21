@@ -881,7 +881,7 @@ const CollageEditor = () => {
                   <div
                     ref={collageRef}
                     data-testid="collage-preview"
-                    className={`bg-white shadow-2xl overflow-hidden transition-all ${
+                    className={`bg-white shadow-2xl overflow-hidden transition-transform duration-300 ${
                       paperOrientation === 'landscape' 
                         ? 'w-full max-w-[90vw] lg:max-w-4xl' 
                         : 'w-full max-w-[80vw] sm:max-w-2xl lg:max-w-3xl'
@@ -889,7 +889,9 @@ const CollageEditor = () => {
                     style={{ 
                       aspectRatio: paperOrientation === 'portrait' ? '210/297' : '297/210',
                       padding: '0',
-                      maxHeight: paperOrientation === 'portrait' ? '80vh' : '70vh'
+                      maxHeight: paperOrientation === 'portrait' ? '80vh' : '70vh',
+                      transform: `scale(${zoomLevel})`,
+                      transformOrigin: 'center'
                     }}
                   >
                     {/* Company Header */}
