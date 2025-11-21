@@ -974,17 +974,12 @@ const CollageEditor = () => {
                               style={{
                                 order: layout === '4-small-1-large' && slotIndex === 4 ? -1 : slotIndex
                               }}
-                              className={`bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-gray-300 transition-all hover:border-indigo-400 hover:from-indigo-50 hover:to-purple-50 ${
+                              className={`bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-gray-300 transition-all hover:border-indigo-400 hover:from-indigo-50 hover:to-purple-50 h-full ${
                                 (layout === '1-large-landscape' && photos.length === 0 && i === 0) ? 'row-span-2' : ''
                               } ${
                                 (layout === '1-large-portrait' && photos.length === 0 && i === 0) ? 'col-span-2' : ''
                               } ${
                                 (layout === '4-small-1-large' && slotIndex === 4) ? 'col-span-2 row-span-2' : ''
-                              } ${
-                                // Apply aspect-square only to non-large slots
-                                (layout !== '4-small-1-large' && 
-                                 !(layout === '1-large-landscape' && photos.length === 0 && i === 0) && 
-                                 !(layout === '1-large-portrait' && photos.length === 0 && i === 0)) ? 'aspect-square' : ''
                               }`}
                             >
                               <ImageIcon className="w-8 h-8 text-gray-300 mb-2" />
