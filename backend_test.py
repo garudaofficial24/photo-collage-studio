@@ -7,7 +7,7 @@ from pathlib import Path
 import json
 
 class CollageAPITester:
-    def __init__(self, base_url="https://photosheet-1.preview.emergentagent.com"):
+    def __init__(self, base_url="https://collage-maker-7.preview.emergentagent.com"):
         self.base_url = base_url
         self.api_url = f"{base_url}/api"
         self.tests_run = 0
