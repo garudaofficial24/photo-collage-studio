@@ -159,6 +159,18 @@ backend:
         comment: "Comprehensive testing completed: GET /api/photos/{id}/file returns uploaded photo files ✅, Proper content-type headers (image/png, image/jpeg) ✅, File content accessible and valid ✅, Returns 404 for non-existent photos ✅, Handles malformed IDs appropriately ✅. CORS headers not explicitly set but not blocking functionality."
 
 frontend:
+  - task: "Image fit/fill mode"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/CollageEditor.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Image fit/fill mode testing completed: Fill mode (object-cover) selection working ✅, Fit mode (object-contain) selection working ✅, Visual feedback with border-blue-500 styling ✅, Mode switching responsive ✅, Preview shows correct image fitting behavior ✅. All image fit/fill functionality working correctly."
+        
   - task: "Modal-based preview system"
     implemented: true
     working: true
