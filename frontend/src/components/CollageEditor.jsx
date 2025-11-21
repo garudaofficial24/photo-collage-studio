@@ -846,6 +846,147 @@ const CollageEditor = () => {
                         })}
                     </div>
                   </div>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+
+              {/* Download Button */}
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white cursor-pointer hover:shadow-2xl transition-all hover:scale-[1.02] group">
+                <CardContent className="p-8 text-center">
+                  <Download className="w-12 h-12 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-xl font-bold mb-2">Download PDF</h3>
+                  <p className="text-sm text-emerald-100">Simpan kolase sebagai file PDF</p>
+                  <Button
+                    onClick={generatePDF}
+                    className="mt-4 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/30 hover:border-white/50 transition-all"
+                    size="sm"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Download Sekarang
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Collage Preview Card */}
+            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm overflow-hidden sticky top-24">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-5">
+                  <div>
+                    <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                      <ImageIcon className="w-5 h-5 text-indigo-600" />
+                      Preview Kolase
+                    </h2>
+                    <p className="text-xs text-gray-500 mt-1">Live preview hasil kolase Anda</p>
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-orange-50 to-amber-50 rounded-lg border border-orange-200">
+                    <FileText className="w-4 h-4 text-orange-600" />
+                    <span className="text-xs font-medium text-orange-700">
+                      {paperOrientation === 'portrait' ? 'A4 Portrait' : 'A4 Landscape'}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-gray-100 to-gray-50 rounded-xl p-6 flex items-center justify-center min-h-[600px]">
+                  <div
+                    ref={collageRef}
+                    data-testid="collage-preview"
+                    className={`bg-white shadow-2xl overflow-hidden transition-all ${
+                      paperOrientation === 'landscape' ? 'w-full max-w-5xl' : 'w-full max-w-3xl'
+                    }`}
+                    style={{ 
+                      aspectRatio: paperOrientation === 'portrait' ? '210/297' : '297/210',
+                      padding: '0'
+                    }}
+                  >
+                    {/* Company Header */}
+                    {(logoPreview || companyName || companyMotto) && (
+                      <div className="h-20 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 flex items-center justify-center px-6">
+                        <div className="flex items-center gap-4 text-white">
+                          {logoPreview && (
+                            <img
+                              src={logoPreview}
+                              alt="Company Logo"
+                              className="w-14 h-14 object-contain bg-white/20 backdrop-blur-sm rounded-lg p-2"
+                            />
+                          )}
+                          {companyName && (
+                            <div>
+                              <h3 className="text-xl font-bold tracking-wide">{companyName}</h3>
+                              {companyMotto ? (
+                                <p className="text-xs opacity-90 italic">"{companyMotto}"</p>
+                              ) : (
+                                <p className="text-xs opacity-90">Dokumentasi Foto Resmi</p>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Photo Grid */}
+                    <div className={`grid ${getGridLayout} ${layout === '4-small-1-large' ? 'gap-3 p-4' : 'gap-2 p-6'} w-full h-full`}>
+                      {photos.slice(0, getPhotoCount).map((photo, index) => (
+                        <div
+                          key={photo.id}
+                          data-photo-id={photo.id}
+                          data-testid={`collage-photo-${index}`}
+                          style={{
+                            order: layout === '4-small-1-large' && index === 4 ? -1 : index
+                          }}
+                          className={`relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group ${
+                            (layout === '1-large-landscape' && index === 0) ? 'row-span-2' : ''
+                          } ${
+                            (layout === '1-large-portrait' && index === 0) ? 'col-span-2' : ''
+                          } ${
+                            (layout === '4-small-1-large' && index === 4) ? 'col-span-2 row-span-2' : ''
+                          } ${
+                            layout !== '4-small-1-large' ? 'aspect-square' : ''
+                          }`}
+                          onClick={() => setSelectedPhoto(photo)}
+                        >
+                          <img
+                            src={`${API}/photos/${photo.id}/file`}
+                            alt={photo.original_filename}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                          <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="w-6 h-6 bg-white rounded-full shadow-lg flex items-center justify-center">
+                              <span className="text-xs font-bold text-indigo-600">{index + 1}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* Empty slots */}
+                      {photos.length < getPhotoCount &&
+                        Array.from({ length: getPhotoCount - photos.length }).map((_, i) => {
+                          const slotIndex = photos.length + i;
+                          return (
+                            <div
+                              key={`empty-${i}`}
+                              style={{
+                                order: layout === '4-small-1-large' && slotIndex === 4 ? -1 : slotIndex
+                              }}
+                              className={`bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-gray-300 transition-all hover:border-indigo-400 hover:from-indigo-50 hover:to-purple-50 ${
+                                (layout === '1-large-landscape' && photos.length === 0 && i === 0) ? 'row-span-2' : ''
+                              } ${
+                                (layout === '1-large-portrait' && photos.length === 0 && i === 0) ? 'col-span-2' : ''
+                              } ${
+                                (layout === '4-small-1-large' && slotIndex === 4) ? 'col-span-2 row-span-2' : ''
+                              } ${
+                                layout !== '4-small-1-large' ? 'aspect-square' : ''
+                              }`}
+                            >
+                              <ImageIcon className="w-8 h-8 text-gray-300 mb-2" />
+                              <span className="text-xs text-gray-400 font-medium">{slotIndex + 1}</span>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
