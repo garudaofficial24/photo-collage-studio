@@ -972,7 +972,7 @@ const CollageEditor = () => {
                           style={{
                             order: layout === '4-small-1-large' && index === 4 ? -1 : index
                           }}
-                          className={`relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group h-full ${
+                          className={`relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer group w-full h-full min-h-0 ${
                             (layout === '1-large-landscape' && index === 0) ? 'row-span-2' : ''
                           } ${
                             (layout === '1-large-portrait' && index === 0) ? 'col-span-2' : ''
