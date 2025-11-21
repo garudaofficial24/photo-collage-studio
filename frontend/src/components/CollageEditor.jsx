@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
-import { Upload, Download, RotateCw, Image as ImageIcon, FileText, Trash2, Plus, Grid3x3, Layout, Sparkles, Building2, Quote, Camera, Sliders, Settings, ChevronRight, Check, Eye, X } from 'lucide-react';
+import { Upload, Download, RotateCw, Image as ImageIcon, FileText, Trash2, Plus, Grid3x3, Layout, Sparkles, Building2, Quote, Camera, Sliders, Settings, ChevronRight, Check, Eye, X, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import { Button } from './ui/button';
