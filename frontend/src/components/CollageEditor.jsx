@@ -852,14 +852,20 @@ const CollageEditor = () => {
                     )}
 
                     {/* Photo Grid */}
-                    <div className={`grid ${getGridLayout} w-full ${
-                      (logoPreview || companyName || companyMotto) ? 'h-[calc(100%-5rem)]' : 'h-full'
-                    } ${
-                      layout === '4-small-1-large' ? 'gap-2 p-3' : 
-                      layout === '4x4' ? 'gap-1 p-2' : 
-                      layout === '3x3' ? 'gap-1.5 p-2' : 
-                      'gap-2 p-3'
-                    }`}>
+                    <div 
+                      className={`grid ${getGridLayout} w-full ${
+                        (logoPreview || companyName || companyMotto) ? 'h-[calc(100%-5rem)]' : 'h-full'
+                      } ${
+                        layout === '4-small-1-large' ? 'gap-2 p-3' : 
+                        layout === '4x4' ? 'gap-1 p-2' : 
+                        layout === '3x3' ? 'gap-1.5 p-2' : 
+                        'gap-2 p-3'
+                      }`}
+                      style={{
+                        gridAutoRows: '1fr',
+                        gridTemplateRows: layout === '4-small-1-large' ? 'repeat(2, 1fr)' : undefined
+                      }}
+                    >
                       {photos.slice(0, getPhotoCount).map((photo, index) => (
                         <div
                           key={photo.id}
