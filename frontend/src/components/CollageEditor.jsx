@@ -358,6 +358,7 @@ const CollageEditor = () => {
                   Photo Collage Studio
                 </h1>
                 <p className="text-xs text-gray-500">Professional Photo Layout Designer</p>
+                <p className="text-[10px] text-gray-400 mt-0.5">Copyright ©2025. Garuda Technology</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
