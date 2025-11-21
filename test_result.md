@@ -146,6 +146,18 @@ backend:
         agent: "testing"
         comment: "Comprehensive testing completed: Delete existing photo ✅ (returns 200, file becomes inaccessible), Delete non-existent photo ✅ (returns 404), Photo list updates correctly after deletion ✅, Malformed photo IDs handled properly ✅. Note: Endpoint uses photo ID, not filename as originally specified in review request."
 
+  - task: "Photo file access endpoint"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Comprehensive testing completed: GET /api/photos/{id}/file returns uploaded photo files ✅, Proper content-type headers (image/png, image/jpeg) ✅, File content accessible and valid ✅, Returns 404 for non-existent photos ✅, Handles malformed IDs appropriately ✅. CORS headers not explicitly set but not blocking functionality."
+
 frontend:
   - task: "Modal-based preview system"
     implemented: true
