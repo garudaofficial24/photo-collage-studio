@@ -170,13 +170,26 @@ const CollageEditor = () => {
         return;
       }
       
-      // Log current imageObjectFit state for debugging
-      console.log('PDF Generation - imageObjectFit:', imageObjectFit);
-      console.log('PDF Generation - paperOrientation:', paperOrientation);
+      // Log current settings for debugging
+      console.log('=== PDF GENERATION SETTINGS ===');
+      console.log('imageObjectFit:', imageObjectFit);
+      console.log('paperOrientation:', paperOrientation);
+      console.log('layout:', layout);
+      console.log('companyName:', companyName);
+      console.log('companyMotto:', companyMotto);
       
       // Wait for all images to load
       const images = targetRef.querySelectorAll('img');
-      console.log('PDF Generation - Found images:', images.length);
+      console.log('Found images:', images.length);
+      
+      // Log image classes to verify fit/fill
+      if (images.length > 0) {
+        const firstImgClass = images[0].className;
+        console.log('First image class:', firstImgClass);
+        console.log('Has object-contain:', firstImgClass.includes('object-contain'));
+        console.log('Has object-cover:', firstImgClass.includes('object-cover'));
+      }
+      console.log('================================');
       
       await Promise.all(
         Array.from(images).map(img => {
