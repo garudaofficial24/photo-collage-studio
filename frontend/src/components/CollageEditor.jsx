@@ -243,17 +243,17 @@ const CollageEditor = () => {
   // Get grid layout
   const getGridLayout = useMemo(() => {
     switch (layout) {
-      case '2x2': return 'grid-cols-2 grid-rows-2';
-      case '3x3': return 'grid-cols-3 grid-rows-3';
-      case '4x4': return 'grid-cols-4 grid-rows-4';
-      case '2x3': return 'grid-cols-2 grid-rows-3';
-      case '3x2': return 'grid-cols-3 grid-rows-2';
-      case '1-large-landscape': return 'grid-cols-2 grid-rows-2';
-      case '1-large-portrait': return 'grid-cols-2 grid-rows-2';
-      case '4-small-1-large': return 'grid-cols-4 grid-rows-2';
-      case 'portrait': return 'grid-cols-2 grid-rows-4';
-      case 'landscape': return 'grid-cols-4 grid-rows-2';
-      default: return 'grid-cols-2 grid-rows-2';
+      case '2x2': return 'grid-cols-2';
+      case '3x3': return 'grid-cols-3';
+      case '4x4': return 'grid-cols-4';
+      case '2x3': return 'grid-cols-2';
+      case '3x2': return 'grid-cols-3';
+      case '1-large-landscape': return 'grid-cols-2';
+      case '1-large-portrait': return 'grid-cols-2';
+      case '4-small-1-large': return 'grid-cols-4';
+      case 'portrait': return 'grid-cols-2';
+      case 'landscape': return 'grid-cols-4';
+      default: return 'grid-cols-2';
     }
   }, [layout]);
 
