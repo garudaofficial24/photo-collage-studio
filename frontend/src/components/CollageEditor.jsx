@@ -797,7 +797,7 @@ const CollageEditor = () => {
           <div className="lg:col-span-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               {/* Preview Button */}
-              <Dialog>
+              <Dialog onOpenChange={(open) => !open && setZoomLevel(1)}>
                 <DialogTrigger asChild>
                   <Card className="border-0 shadow-lg bg-gradient-to-br from-indigo-500 to-purple-600 text-white cursor-pointer hover:shadow-2xl transition-all hover:scale-[1.02] group">
                     <CardContent className="p-8 text-center">
