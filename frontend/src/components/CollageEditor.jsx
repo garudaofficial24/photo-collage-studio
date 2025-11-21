@@ -32,6 +32,9 @@ const CollageEditor = () => {
   // Image fit/fill state
   const [imageObjectFit, setImageObjectFit] = useState('cover'); // 'cover' (fill) or 'contain' (fit)
   
+  // Zoom state for preview
+  const [zoomLevel, setZoomLevel] = useState(1);
+  
   // Company header state
   const [companyLogo, setCompanyLogo] = useState(null);
   const [companyName, setCompanyName] = useState('');
