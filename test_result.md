@@ -282,10 +282,11 @@ frontend:
 metadata:
   created_by: "main_agent"
   version: "1.0"
-  test_sequence: 2
+  test_sequence: 3
   run_ui: false
   last_tested: "2025-11-21"
   backend_testing_completed: true
+  frontend_testing_completed: true
 
 test_plan:
   current_focus: []
