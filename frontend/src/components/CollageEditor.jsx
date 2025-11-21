@@ -706,27 +706,48 @@ const CollageEditor = () => {
             </Tabs>
           </div>
 
-          {/* Right Side - Collage Preview */}
+          {/* Right Side - Quick Actions */}
           <div className="lg:col-span-8">
-            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm overflow-hidden sticky top-24">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-5">
-                  <div>
-                    <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                      <ImageIcon className="w-5 h-5 text-indigo-600" />
-                      Preview Kolase
-                    </h2>
-                    <p className="text-xs text-gray-500 mt-1">Live preview hasil kolase Anda</p>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-orange-50 to-amber-50 rounded-lg border border-orange-200">
-                    <FileText className="w-4 h-4 text-orange-600" />
-                    <span className="text-xs font-medium text-orange-700">
-                      {paperOrientation === 'portrait' ? 'A4 Portrait' : 'A4 Landscape'}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-gray-100 to-gray-50 rounded-xl p-6 flex items-center justify-center min-h-[600px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              {/* Preview Button */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Card className="border-0 shadow-lg bg-gradient-to-br from-indigo-500 to-purple-600 text-white cursor-pointer hover:shadow-2xl transition-all hover:scale-[1.02] group">
+                    <CardContent className="p-8 text-center">
+                      <Eye className="w-12 h-12 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                      <h3 className="text-xl font-bold mb-2">Preview Kolase</h3>
+                      <p className="text-sm text-indigo-100">Lihat hasil kolase dalam ukuran penuh</p>
+                      <div className="mt-4 flex items-center justify-center gap-2 text-xs bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1.5">
+                        <FileText className="w-3 h-3" />
+                        {paperOrientation === 'portrait' ? 'A4 Portrait' : 'A4 Landscape'}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </DialogTrigger>
+                <DialogContent className="max-w-6xl w-full h-[90vh] p-0 bg-gray-900">
+                  <div className="relative h-full flex flex-col">
+                    {/* Header */}
+                    <div className="flex items-center justify-between p-4 bg-gray-800 border-b border-gray-700">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
+                          <Eye className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-white font-bold">Preview Kolase</h3>
+                          <p className="text-xs text-gray-400">
+                            {paperOrientation === 'portrait' ? 'A4 Portrait (210x297mm)' : 'A4 Landscape (297x210mm)'}
+                          </p>
+                        </div>
+                      </div>
+                      <DialogClose asChild>
+                        <Button variant="ghost" size="sm" className="text-white hover:bg-gray-700">
+                          <X className="w-5 h-5" />
+                        </Button>
+                      </DialogClose>
+                    </div>
+                    
+                    {/* Preview Content */}
+                    <div className="flex-1 overflow-auto p-6 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
                   <div
                     ref={collageRef}
                     data-testid="collage-preview"
