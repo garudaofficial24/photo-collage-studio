@@ -23,6 +23,7 @@ const CollageEditor = () => {
   const [brightness, setBrightness] = useState(1);
   const [contrast, setContrast] = useState(1);
   const collageRef = useRef(null);
+  const pdfCollageRef = useRef(null); // Hidden ref for PDF generation
   const layoutChangeTimeout = useRef(null);
   
   // Paper orientation state
