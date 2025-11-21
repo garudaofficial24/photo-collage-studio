@@ -170,8 +170,14 @@ const CollageEditor = () => {
         return;
       }
       
+      // Log current imageObjectFit state for debugging
+      console.log('PDF Generation - imageObjectFit:', imageObjectFit);
+      console.log('PDF Generation - paperOrientation:', paperOrientation);
+      
       // Wait for all images to load
       const images = targetRef.querySelectorAll('img');
+      console.log('PDF Generation - Found images:', images.length);
+      
       await Promise.all(
         Array.from(images).map(img => {
           if (img.complete) return Promise.resolve();
